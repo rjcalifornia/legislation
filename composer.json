@@ -1,0 +1,14 @@
+{
+    "name": "open_gov/legislation",
+	"type": "elgg-plugin",
+	"description": "Open Government and citizen participation plugin",
+	"license": "GPL-2.0-only",
+	"keywords": ["content", "widget"],
+	"homepage": "https://elgg.org",
+    "require": {
+        "twig/twig": "^3.3",
+        "filp/whoops": "^2.14",
+        "vlucas/phpdotenv": "^5.4",
+        "ramsey/uuid": "^4.2"
+    }
+}
