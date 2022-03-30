@@ -2,18 +2,7 @@
 
 $autoload_path = __DIR__ . '/../vendor/autoload.php';
 require_once($autoload_path);
-use Elgg\Legislations\ElggEnv;
 
-$elggEnv = new ElggEnv;
-$elggEnv->load();
-
-$appEnv = $_ENV['APP_ENV'];
-
-if($appEnv == "dev"){
-	$whoops = new \Whoops\Run;
-	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-	$whoops->register();
-}
 
 function elgg_legislation_twig(){
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../resources');
@@ -24,15 +13,31 @@ function elgg_legislation_twig(){
     return $twig;
 }
 
+function getLegislationFiles($documents){
+	$files = [];
+
+	foreach ($documents as $doc) {
+		$entity = get_entity($doc->guid);
+        $fileUrl = elgg_get_download_url($entity);
+		$fileDetails = ['filename' => $entity->title, 'url' => $fileUrl];
+        $files[] = $fileDetails;
+    }
+	return $files;
+	
+}
+
 function legislations_prepare_form_vars($post = NULL, $revision = NULL) {
 
 	// input names => defaults
 	$values = array(
 		'title' => NULL,
 		'description' => NULL,
+		'start_date' => NULL,
+		'end_date' => NULL,
 		'status' => 'published',
 		'access_id' => ACCESS_DEFAULT,
 		'comments_on' => 'On',
+		'end_date' => NULL,
 		'excerpt' => NULL,
 		'tags' => NULL,
 		'container_guid' => NULL,

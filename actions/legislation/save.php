@@ -1,44 +1,49 @@
 <?php
 
 $title = get_input('title');
-$proposalSummary = get_input('summary');
-$proposalText = get_input('description');
+$startDate = get_input('start_date');
+$endDate = get_input('end_date');
+$summary = get_input('summary');
+$status = get_input('status');
+$description = get_input('description');
 $access_id = get_input('access_id');
 $tags = get_input('tags');
 $guid = get_input('guid');
 $container = (int)get_input('container_guid');
-
 $tagarray = string_to_tag_array($tags);
+$goals = get_input('legislation_sdg');
 
+$draft = elgg_get_uploaded_files('project_draft');
+
+if(empty($draft)){
+    register_error("Please, select a draft legislation project");
+    forward(REFERER);
+}
 
 if ($guid) {
-    $proposalsEntity = get_entity($guid);
+    $entity = get_entity($guid);
 }else{
-    $proposalsEntity = new ElggProposals;
-}
-   // $proposalsEntity->subtype = "proposals";
-    $proposalsEntity->title = $title;
-    $proposalsEntity->summary = $proposalSummary;
-    $proposalsEntity->description = $proposalText;
-    $proposalsEntity->external_video = $proposalExternalVideo;
-    $proposalsEntity->external_video_type = $videoType;
-    $proposalsEntity->scope_operation = $scopeOperation;
-    $proposalsEntity->access_id = $access_id;
-    $proposalsEntity->tags = $tagarray;
+    $entity = new ElggLegislations;
+} 
+    $entity->title = $title;
+    $entity->summary = $summary;
+    $entity->description = $description;
+    $entity->start_date = $startDate;
+    $entity->end_date = $endDate;
 
+    $entity->access_id = $access_id;
+    $entity->tags = $tagarray;
+    $entity->comments_on = 'On';
+    $entity->status = $status;
 
+    if($goals){
+        $goalsArray = string_to_tag_array($goals);
+        $entity->goals= $goalsArray;
+    }
    
 
 
 /*
-    foreach (elgg_get_uploaded_files('proposals_documents') as $uploadDocument) {
-        $proposalDocument = new ElggFile();
-        $proposalDocument->owner_guid = elgg_get_logged_in_user_guid();
-        $proposalDocument->container_guid = $proposalsEntity->getGUID();
-        if ($proposalDocument->acceptUploadedFile($uploadDocument)) {
-                $proposalDocument->save();
-        }
-}
 
 $descriptiveImage = elgg_get_uploaded_file('descriptive_image');
 if ($descriptiveImage != null) {
@@ -51,26 +56,42 @@ if ($descriptiveImage != null) {
         }
 }*/
 
-    $proposalsGuid= $proposalsEntity->save();
+    $guid = $entity->save();
 
-    $proposalDocuments = elgg_get_uploaded_files('proposals_documents');
-    if ($proposalDocuments) {
-        
-    
-    
-    foreach (elgg_get_uploaded_files('proposals_documents') as $uploadedDocument) {
-            $file = new ProposalPaper();
+    if ($draft) {
+        $uploadedDraft = array_shift($draft);
+            if (!$uploadedDraft->isValid()) {
+                    $error = elgg_get_friendly_upload_error($uploadedDraft->getError());
+                    register_error($error);
+                    forward(REFERER);
+                }
+        }
+ 
+    if($uploadedDraft) {
+            $file = new LegislationDraft();
             $file->title = $file->getFilename();
-            $file->container_guid = $proposalsEntity->getGUID();
+            $file->container_guid = $entity->getGUID();
             $file->access_id = 2;
-            if ($file->acceptUploadedFile($uploadedDocument)) {
+            if ($file->acceptUploadedFile($uploadedDraft)) {
             $file->save();
+        }
+    }
+    
+  
+    $additionalDocumentation = elgg_get_uploaded_files('additional_documentation');
+    foreach($additionalDocumentation as $ad){
+            $documentation = new AdditionalDocumentation();
+            $documentation->title = $documentation->getFilename();
+            $documentation->container_guid = $entity->getGUID();
+            $documentation->access_id = 2;
+            if ($documentation->acceptUploadedFile($ad)) {
+            $documentation->save();
 
 
             }
     }
-}
 
+ /**** 
     $descriptiveImage = elgg_get_uploaded_files('descriptive_image');
 
     
@@ -94,12 +115,12 @@ if ($descriptiveImage != null) {
     }
     
 
-
-    if ($proposalsGuid) {
-        system_message("Your proposal was published.");
-        forward('proposals');
+**********/
+    if ($guid) {
+        system_message("The legislation project was published.");
+        forward('legislations');
      } else {
-        register_error("The proposal could not be saved.");
+        register_error("There was a problem. Data could not be saved.");
         forward(REFERER); // REFERER is a global variable that defines the previous page
      }
 

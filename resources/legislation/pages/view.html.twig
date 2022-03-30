@@ -1,0 +1,75 @@
+<style>
+.phase{
+    color: #515151;
+font-size: 0.875rem;
+}
+</style>
+<div class="legislation-main">
+
+    <blockquote class="legislation-summary">
+        {{data.summary}}
+    </blockquote>
+
+    <div class="legislation-text">
+        {{data.legislation.description|raw}}
+    </div>
+
+</div>
+
+<br>
+{% if data.sustainable_goals is iterable %}
+    <div class="debates-goals">
+
+        {% for n in data.sustainable_goals %}
+
+            <img src="{{data.site_url}}mod/debates/graphics/sdg/{{n}}.png" width="80">
+
+        {% endfor %}
+
+
+    </div>
+{% else %}
+
+    <img src="{{data.site_url}}mod/debates/graphics/sdg/{{data.sustainable_goals}}.png" width="80">
+
+{% endif %}
+<div class="legislation_draft">
+       {% for dr in data.legislation_draft %}
+      <p>  
+      <iframe src = "{{data.site_url}}/mod/legislation/dependencies/ViewerJS/#{{dr.url}}" width='100%' height='720' allowfullscreen webkitallowfullscreen></iframe>
+       
+            </p>
+       {% endfor %}
+    </div>
+<br>
+
+
+<div class="additional-document-link">
+          <p>
+            <strong>Additional documentation</strong>
+          </p>
+
+    {% for ad in data.additional_documentation %}
+        <p>   
+            <a href="{{ad.url}}">
+                <span class="fa fa-file-pdf"></span>
+                    {{ad.filename}}
+            </a>
+        </p>
+    {% endfor %}
+          
+
+        </div>
+        
+<br>
+ <div class="participation-phase">
+    <p>
+        <h3>Participation Phase</h3>
+    </p>
+        <div  class="phase">
+        {{data.start_date}} - {{data.end_date}}
+        </div>
+    </div>
+
+<br>
+        {{data.responses}}

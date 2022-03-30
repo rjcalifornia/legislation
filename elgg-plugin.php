@@ -13,12 +13,33 @@ return [
                         'type' => 'object',
                         'subtype' => 'legislations',
                         'class' => 'ElggLegislations',
-                        'searchable' => true,
+                        'capabilities' => [
+                            'commentable' => true,
+                            'searchable' => true,
+                            'likable' => true,
+                        ],
+                    ],
+
+                    //Declarar entity de los documentos
+                    [
+                        'type' => 'object',
+                        'subtype' => 'legislation_draft',
+                        'class' => 'LegislationDraft',
+                        'searchable' => false,
+                    ],
+                    //Declarar entity de los documentos
+                    [
+                        'type' => 'object',
+                        'subtype' => 'additional_documentation',
+                        'class' => 'AdditionalDocumentation',
+                        'searchable' => false,
                     ],
                 ],
                 
     //Acciones (Guardar la propuesta, marcar designada, etc)
-    'actions' => [],
+    'actions' => [
+        'legislation/save' => [],
+    ],
 
     //Rutas del plugin (Todos, Ver, Editar)
     'routes' => [
