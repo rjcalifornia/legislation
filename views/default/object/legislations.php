@@ -124,7 +124,7 @@ if ($full) {
     $data['legislation_draft'] = $legislationDraft;
     $data['additional_documentation'] = $additionalDocumentation;
     $data['tags'] = $tags;
-    //$data['is_selected'] = $single->selected;
+    $data['process_code'] = $single->process_code;
     $data['site_url'] = $site_url;
     $data['sustainable_goals'] = $entity->goals;
     $data['responses'] = new \Twig\Markup($responses, 'UTF-8');

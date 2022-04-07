@@ -22,18 +22,83 @@
 	width: 50% !important; 
 	margin-bottom: 22px;
 }
-</style>
+.container {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "label start end"
+    ". . ."
+    ". . .";
+}
 
-<div class="field_set">
-	<div class="ui-date">
+.label { grid-area: label;
+
+ }
+
+.start {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "label-start label-start label-start"
+    "datetime-pick datetime-pick datetime-pick"
+    "datetime-pick datetime-pick datetime-pick";
+  grid-area: start;
+}
+
+.label-start { grid-area: label-start; padding-left: 6px;}
+
+.datetime-pick { grid-area: datetime-pick; 
+padding: 6px;
+}
+
+.end {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "label-end label-end label-end"
+    "datetime-pick-end datetime-pick-end datetime-pick-end"
+    "datetime-pick-end datetime-pick-end datetime-pick-end";
+  grid-area: end;
+}
+
+.label-end { grid-area: label-end; padding-left: 6px;}
+
+.datetime-pick-end { grid-area: datetime-pick-end;
+padding: 6px;
+ }
+
+.label-process, .label-start, .label-end{
+	font-weight: bold;
+}
+</style>
+<div class="container">
+  <div class="label-process">
+	{{data.process_label}}
+  </div>
+  <div class="start">
+    <div class="label-start">
 		{{data.start_date_label}}
+	</div>
+    <div class="datetime-pick">
 		{{data.start_date_input}}
 	</div>
-	<div class="ui-date">
+  </div>
+  <div class="end">
+    <div class="label-end">
 		{{data.end_date_label}}
+	</div>
+    <div class="datetime-pick-end">
 		{{data.end_date_input}}
 	</div>
+  </div>
 </div>
+
 
 <div class="field_set">
 	<label>{{data.project_draft_label}}</label><br />
@@ -62,13 +127,6 @@
 	</div>
 
 
-
-<div class="field_set">
-	<label>{{data.additional_documentation_label}}</label><br />
-	{{data.additional_documentation_input}}
-</div>
-
-
 <div class="field_set">
 	<label>{{data.sdg_label}}</label><br />
 	{{data.sdg_input}}
@@ -79,6 +137,13 @@
 	<label>{{data.tags_label}}</label><br />
 	{{data.tags_input}}
 </div>
+
+
+<div class="field_set">
+	<label>{{data.additional_documentation_label}}</label><br />
+	{{data.additional_documentation_input}}
+</div>
+
 
 
 <div class="field_set">

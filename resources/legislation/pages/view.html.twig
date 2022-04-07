@@ -4,6 +4,7 @@
 font-size: 0.875rem;
 }
 </style>
+
 <div class="legislation-main">
 
     <blockquote class="legislation-summary">
@@ -33,6 +34,13 @@ font-size: 0.875rem;
     <img src="{{data.site_url}}mod/debates/graphics/sdg/{{data.sustainable_goals}}.png" width="80">
 
 {% endif %}
+
+<div>
+    <p>
+    <label>Process code:</label>
+        <b>{{data.process_code}}</b>
+    </p>
+</div>
 <div class="legislation_draft">
        {% for dr in data.legislation_draft %}
       <p>  

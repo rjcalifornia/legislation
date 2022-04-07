@@ -1,5 +1,8 @@
 <?php
 
+use Ramsey\Uuid\Uuid;
+
+
 $title = get_input('title');
 $startDate = get_input('start_date');
 $endDate = get_input('end_date');
@@ -12,6 +15,9 @@ $guid = get_input('guid');
 $container = (int)get_input('container_guid');
 $tagarray = string_to_tag_array($tags);
 $goals = get_input('legislation_sdg');
+$uuid = Uuid::uuid4();
+$process_code = $_ENV['PROCESS_IDENTIFIER'] . substr($uuid, 0, 12);
+$newProcess = true;
 
 $draft = elgg_get_uploaded_files('project_draft');
 
@@ -22,8 +28,10 @@ if(empty($draft)){
 
 if ($guid) {
     $entity = get_entity($guid);
+    $newProcess = false;
 }else{
     $entity = new ElggLegislations;
+    $entity->process_code = $process_code;
 } 
     $entity->title = $title;
     $entity->summary = $summary;
@@ -35,6 +43,7 @@ if ($guid) {
     $entity->tags = $tagarray;
     $entity->comments_on = 'On';
     $entity->status = $status;
+    
 
     if($goals){
         $goalsArray = string_to_tag_array($goals);
@@ -116,6 +125,15 @@ if ($descriptiveImage != null) {
     
 
 **********/
+
+    if($newProcess == true){
+        elgg_create_river_item([
+            'view' => 'river/object/legislation/create',
+            'action_type' => 'create',
+            'subject_guid' => $entity->owner_guid,
+            'object_guid' => $entity->getGUID(),
+        ]);
+    }
     if ($guid) {
         system_message("The legislation project was published.");
         forward('legislations');

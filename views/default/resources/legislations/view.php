@@ -34,8 +34,7 @@ $params['content'] = elgg_view_entity($entity, array('full_view' => true,
 
 $params['sidebar'] = elgg_view('custom/legislations/sidebar', [
 					'page' => $page_type,
-					//'twig'=> $vars['twig'],
-					//'proposal_guid' => $entity->guid
+
 				]);
 
 $body = elgg_view_layout('content', $params);

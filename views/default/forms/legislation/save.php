@@ -5,12 +5,16 @@ use Elgg\Legislations\ElggGoals;
 $title = elgg_extract('title', $vars, '');
 $desc = elgg_extract('description', $vars, '');
 $summary = elgg_extract('summary', $vars, '');
+$tags = elgg_extract('tags', $vars, '');
+$goals = elgg_extract('goals', $vars, '');
 $endDate = elgg_extract('end_date', $vars, '');
 $startDate = elgg_extract('end_date', $vars, '');
 
 $twig = elgg_legislation_twig();
 
 $sdg = ElggGoals::getGoals();
+
+var_dump($vars['goals']);
 
 $data['hidden_guid_input'] = '';
 $guid = elgg_extract('guid', $vars, null);
@@ -26,6 +30,8 @@ $access_id = elgg_extract('access_id', $vars, ACCESS_DEFAULT);
 $container_guid = elgg_extract('container_guid', $vars);
 
 
+
+$data['process_label'] = elgg_echo('legislations:add:process_datetime');
 
 $data['start_date_label'] = elgg_echo('legislations:add:date_start');
 $data['start_date_input'] = new \Twig\Markup(elgg_view('input/date', ['name'=>'start_date', 'value'=> $startDate]), 'UTF-8');
@@ -73,17 +79,17 @@ $data['sdg_input'] =  new \Twig\Markup(elgg_view('input/select', array(
                                 'id' => 'legislation_sdg',
                                 'required' => true,
                                 'options_values' => $sdg,
-                                //'value' => $vars['goals'],
+                                'value' => $vars['goals'],
                                 'class' => 'js-goals-single selection-sdg',
                                 'multiple' => true,
-                        )), 'UTF-8');;
+                        )), 'UTF-8');
 
 
 $data['tags_label'] = elgg_echo('tags');
 $data['tags_input'] = new \Twig\Markup(elgg_view('input/tags', [
                                                     'name' => 'tags',
                                                     'id' => 'legislation_tags',
-                                                    'value' => $vars['tags']
+                                                    'value' => $tags
                                                 ]), 'UTF-8');
 
                                         

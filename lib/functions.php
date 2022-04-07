@@ -32,8 +32,11 @@ function legislations_prepare_form_vars($post = NULL, $revision = NULL) {
 	$values = array(
 		'title' => NULL,
 		'description' => NULL,
+		'summary' => NULL,
+		'goals' => NULL,
 		'start_date' => NULL,
 		'end_date' => NULL,
+		'process_code' => NULL,
 		'status' => 'published',
 		'access_id' => ACCESS_DEFAULT,
 		'comments_on' => 'On',
