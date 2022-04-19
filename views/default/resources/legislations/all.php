@@ -19,7 +19,7 @@ $content = elgg_list_entities(array(
 
 $title = elgg_echo('collection:object:legislations:all');
 
-$sidebar = elgg_view('custom/legislations/full',  ['page' => 'all']);
+$sidebar = elgg_view('custom/legislations/all',  ['page' => 'all']);
 
 $body = elgg_view_layout('content', array(
 	'filter_value' => 'all',

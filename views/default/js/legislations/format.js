@@ -1,7 +1,12 @@
 define(function(require) {
     var elgg = require("elgg");
     var $ = require("jquery");
-    const Swal = require('https://cdn.jsdelivr.net/npm/sweetalert2@11')
+    var base_url = window.location.origin;
+   
+   // const Swal = require(swalUrl);
+    const Swal = require('../../../mod/legislation/node_modules/sweetalert2/dist/sweetalert2.all.min.js');
+    //const Swal = require('https://cdn.jsdelivr.net/npm/sweetalert2@11')
+    
 
 function getFile(filePath) {
     return filePath.substr(filePath.lastIndexOf('\\') + 1).split('.')[0];

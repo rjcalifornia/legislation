@@ -20,10 +20,6 @@ $params = [
 $container = $entity->getContainerEntity();
 $crumbs_title = $container->name;
 
-
-
-//elgg_push_breadcrumb($entity->title);
-//elgg_push_entity_breadcrumbs($entity, false);
 elgg_push_collection_breadcrumbs('object', 'legislations');
 $params['content'] = elgg_view_entity($entity, array('full_view' => true, 
                                                       //  'twig'=> $vars['twig']
