@@ -14,7 +14,7 @@ $twig = elgg_legislation_twig();
 
 $sdg = ElggGoals::getGoals();
 
-var_dump($vars['goals']);
+
 
 $data['hidden_guid_input'] = '';
 $guid = elgg_extract('guid', $vars, null);
@@ -59,7 +59,7 @@ $data['project_draft_input'] = new \Twig\Markup(elgg_view('input/file', [
                                                 'multiple' => false,
                                               //  'onChange'=>'getoutput()',
                                                 'help' => 'Select one draft document',
-                                                'required' => true,
+                                                'required' => (!$guid),
                                         ]), 'UTF-8');
 
 $data['additional_documentation_label'] = elgg_echo('legislation:additional:documentation');

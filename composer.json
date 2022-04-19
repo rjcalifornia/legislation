@@ -8,6 +8,7 @@
     "require": {
         "twig/twig": "^3.3",
         "ramsey/uuid": "^4.2",
-        "nesbot/carbon": "^2.57"
+        "nesbot/carbon": "^2.57",
+        "vlucas/phpdotenv": "^5.4"
     }
 }

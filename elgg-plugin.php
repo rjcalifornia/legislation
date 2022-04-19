@@ -2,6 +2,10 @@
 
 require_once(__DIR__ . '/lib/functions.php');
 
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
 
 
 return [
@@ -93,7 +97,11 @@ return [
 
 
     
-    'view_extensions' => [],
+    'view_extensions' => [
+        'elgg.css' => [
+			'custom/legislations/sidebar.css' => [],
+		],
+    ],
 
     'hooks' =>[
          //Add plugin menu

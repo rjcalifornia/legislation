@@ -1,7 +1,7 @@
 <?php
 
 use Ramsey\Uuid\Uuid;
-
+use Elgg\Legislations\ElggUtils;
 
 $title = get_input('title');
 $startDate = get_input('start_date');
@@ -16,22 +16,24 @@ $container = (int)get_input('container_guid');
 $tagarray = string_to_tag_array($tags);
 $goals = get_input('legislation_sdg');
 $uuid = Uuid::uuid4();
-$process_code = $_ENV['PROCESS_IDENTIFIER'] . substr($uuid, 0, 12);
+$process_code = $_ENV['PROCESS_IDENTIFICATION'] . substr($uuid, 0, 12);
 $newProcess = true;
 
 $draft = elgg_get_uploaded_files('project_draft');
 
-if(empty($draft)){
-    register_error("Please, select a draft legislation project");
-    forward(REFERER);
-}
+
+
 
 if ($guid) {
     $entity = get_entity($guid);
     $newProcess = false;
 }else{
+    
     $entity = new ElggLegislations;
     $entity->process_code = $process_code;
+    ElggUtils::verifyDraft($draft);
+    
+    
 } 
     $entity->title = $title;
     $entity->summary = $summary;
@@ -68,36 +70,14 @@ if ($descriptiveImage != null) {
     $guid = $entity->save();
 
     if ($draft) {
-        $uploadedDraft = array_shift($draft);
-            if (!$uploadedDraft->isValid()) {
-                    $error = elgg_get_friendly_upload_error($uploadedDraft->getError());
-                    register_error($error);
-                    forward(REFERER);
-                }
-        }
- 
-    if($uploadedDraft) {
-            $file = new LegislationDraft();
-            $file->title = $file->getFilename();
-            $file->container_guid = $entity->getGUID();
-            $file->access_id = 2;
-            if ($file->acceptUploadedFile($uploadedDraft)) {
-            $file->save();
-        }
+        $uploadedDraft = ElggUtils::validateDraft($draft);
+        ElggUtils::uploadFile(new LegislationDraft(),$entity, $uploadedDraft);  
     }
     
   
     $additionalDocumentation = elgg_get_uploaded_files('additional_documentation');
     foreach($additionalDocumentation as $ad){
-            $documentation = new AdditionalDocumentation();
-            $documentation->title = $documentation->getFilename();
-            $documentation->container_guid = $entity->getGUID();
-            $documentation->access_id = 2;
-            if ($documentation->acceptUploadedFile($ad)) {
-            $documentation->save();
-
-
-            }
+            ElggUtils::uploadFile(new AdditionalDocumentation(),$entity, $ad);  
     }
 
  /**** 
