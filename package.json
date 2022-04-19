@@ -1,0 +1,28 @@
+{
+  "name": "legislation",
+  "version": "1.0.0",
+  "description": "Citizen Participation and Open Government plugin. Inspired by the CONSUL Project: https://consulproject.org/en/",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjcalifornia/legislation.git"
+  },
+  "keywords": [
+    "open government",
+    "open legislation"
+  ],
+  "author": "rjcalifornia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjcalifornia/legislation/issues"
+  },
+  "homepage": "https://github.com/rjcalifornia/legislation#readme",
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  }
+}
