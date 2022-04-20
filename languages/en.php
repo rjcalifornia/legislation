@@ -5,6 +5,7 @@ return [
     'collection:object:legislations' => 'Collaborative Legislation',
     'collection:object:legislations:all' => 'All Legislations',
     'legislations:none' => 'None',
+    'item:object:legislations' => 'Collaborative Legislations',
     'legislation:add' => 'Create new collaborative legislation process',
     'legislation:add:banner' => 'Select a banner image. If empty, a placeholder image will be used instead',
     'add:object:legislations' => 'Create a new legislation process',

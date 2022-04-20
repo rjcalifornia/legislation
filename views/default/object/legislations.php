@@ -149,6 +149,7 @@ if ($full) {
     $data['excerpt'] = $entity->getExcerpt();
     $data['start_date'] = Carbon::parse($entity->start_date);
     $data['end_date'] = Carbon::parse($entity->end_date);
+    $data['tags'] = $entity->tags;
 
     //var_dump( $single->toObject());
     echo $twig->render('legislation/elements/summary.html.twig',  [ 

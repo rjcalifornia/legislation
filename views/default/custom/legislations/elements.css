@@ -1,0 +1,108 @@
+.legislation {
+    margin: 0 0 1.5rem;
+    background: #fff;
+    border: 1px solid;
+      border-top-color: currentcolor;
+      border-right-color: currentcolor;
+      border-bottom-color: currentcolor;
+      border-left-color: currentcolor;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 0;
+    -webkit-box-shadow: 0 1px 3px 0 #dee0e3;
+    box-shadow: 0 1px 3px 0 #dee0e3;
+    min-height: 12rem;
+    padding: 2rem 0 0;
+  }
+  
+  .column, .columns {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+  }
+  .legislation-text {
+    margin-bottom: 1rem;
+  }
+  
+  .legislation-text h3 a {
+    color: #222;
+    font-size: 1.5rem;
+  }
+  
+  .medium-4 {
+    width: 33.33333%;
+  }
+  .button.hollow {
+    border: 1px solid #2367b5;
+    color: #2367b5;
+  }
+  
+  .button.hollow, .button.hollow:hover, .button.hollow:focus {
+    background-color: transparent;
+  }
+  
+  .button {
+    background: #49722d;
+      background-color: rgb(73, 114, 45);
+    font-weight: 500;
+    font-size: 17px;
+  }
+  
+  .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+      margin-right: 0px;
+      margin-left: 0px;
+    font-family: inherit;
+    padding: 0.85em 1em;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 0.1875rem;
+    -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: #1779ba;
+    color: #fefefe;
+  }
+  .legislation-calendar {
+    background: #e7f2fc;
+    padding-top: 1rem;
+  }
+  .medium-uncollapse > .column, .medium-uncollapse > .columns {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+  }
+  
+  .legislation h1, .legislation h2, .legislation h3, .legislation h4, .legislation h5, .legislation h6 {
+    color: #2367b5;
+  }
+  
+  .legislation-calendar p {
+    margin-left: 0.25rem;
+    font-size: 0.875rem;
+    
+  }
+  a:hover, a.selected {
+    color: #2367b5;
+    text-decoration: none;
+  }
+  
+  .legislation-tags-link{
+      background: #ececec;
+      border-radius: 0.375rem;
+      color: #222;
+      display: inline-block;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      padding: 0.375rem 0.5rem;
+      text-decoration: none;
+  }
+  
+  .legislation-tags-link:hover{
+      background: #e0e0e0;
+      color: #222;
+      text-decoration:none;
+  
+  }

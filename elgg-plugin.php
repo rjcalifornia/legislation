@@ -107,6 +107,7 @@ return [
     'view_extensions' => [
         'elgg.css' => [
 			'custom/legislations/sidebar.css' => [],
+			'custom/legislations/elements.css' => [],
 		],
     ],
 
