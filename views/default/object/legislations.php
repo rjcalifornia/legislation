@@ -141,6 +141,13 @@ if ($full) {
 		'icon' => true,
 	];
 	$params = $params + $vars;
+
+    $test = elgg_view_menu('entity', [
+        'entity' => $entity,
+        'handler' => elgg_extract('handler', $vars),
+        'prepare_dropdown' => true,
+    ]);
+
     $data['banner_image'] = ElggUtils::getSingleFile('legislation_banner', $entity);
     
 	//echo elgg_view('object/elements/summary', $params);
@@ -150,6 +157,7 @@ if ($full) {
     $data['start_date'] = Carbon::parse($entity->start_date);
     $data['end_date'] = Carbon::parse($entity->end_date);
     $data['tags'] = $entity->tags;
+    $data['menu'] = new \Twig\Markup($test, 'UTF-8');
 
     //var_dump( $single->toObject());
     echo $twig->render('legislation/elements/summary.html.twig',  [ 
