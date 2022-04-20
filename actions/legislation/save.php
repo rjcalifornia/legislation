@@ -20,6 +20,7 @@ $process_code = $_ENV['PROCESS_IDENTIFICATION'] . substr($uuid, 0, 12);
 $newProcess = true;
 
 $draft = elgg_get_uploaded_files('project_draft');
+$banner = elgg_get_uploaded_files('project_banner');
 
 
 
@@ -72,6 +73,12 @@ if ($descriptiveImage != null) {
     if ($draft) {
         $uploadedDraft = ElggUtils::validateDraft($draft);
         ElggUtils::uploadFile(new LegislationDraft(),$entity, $uploadedDraft);  
+    }
+    
+
+    if ($banner) {
+        $uploadedBanner = ElggUtils::validateDraft($banner);
+        ElggUtils::uploadFile(new LegislationBanner(),$entity, $uploadedBanner);  
     }
     
   

@@ -15,14 +15,13 @@ if (!$guid) {
 $container = get_entity($guid);
 
 elgg_require_js("legislations/select2");
-//elgg_require_js("legislations/swal");
+
 elgg_require_js("legislations/format");
 
 elgg_entity_gatekeeper($guid);
 
 $page_owner = elgg_get_page_owner_entity();
 
-//elgg_require_js("elgg/legislations/external_video_validation");
 
 // Make sure user has permissions to add to container
 if (!$container->canWriteToContainer(0, 'object', 'legislations')) {

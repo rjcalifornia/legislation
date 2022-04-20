@@ -38,6 +38,13 @@ return [
                         'class' => 'AdditionalDocumentation',
                         'searchable' => false,
                     ],
+                    //Banner image entity
+                    [
+                        'type' => 'object',
+                        'subtype' => 'legislation_banner',
+                        'class' => 'LegislationBanner',
+                        'searchable' => false,
+                    ],
                 ],
                 
     //Acciones (Guardar la propuesta, marcar designada, etc)

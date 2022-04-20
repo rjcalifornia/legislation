@@ -1,5 +1,6 @@
 <?php
 use Carbon\Carbon;
+use Elgg\Legislations\ElggUtils;
 
 $full = elgg_extract('full_view', $vars, FALSE);
 $entity = elgg_extract('entity', $vars, FALSE);
@@ -37,12 +38,9 @@ if (!elgg_in_context('widgets')) {
 	));
 }
 
-
+$single =  get_entity($entity->guid);
 if ($full) {
     
-
-    $single =  get_entity($entity->guid);
-   
     $endDate = Carbon::parse($single->end_date);
 
     $deadline = $currentDate->greaterThan($endDate);
@@ -143,6 +141,19 @@ if ($full) {
 		'icon' => true,
 	];
 	$params = $params + $vars;
-	echo elgg_view('object/elements/summary', $params);
+    $data['banner_image'] = ElggUtils::getSingleFile('legislation_banner', $entity);
+    
+	//echo elgg_view('object/elements/summary', $params);
+    $data['entity'] = $single->toObject();
+    $data['site_url'] = $site_url;
+    $data['excerpt'] = $entity->getExcerpt();
+    $data['start_date'] = Carbon::parse($entity->start_date);
+    $data['end_date'] = Carbon::parse($entity->end_date);
+
+    //var_dump( $single->toObject());
+    echo $twig->render('legislation/elements/summary.html.twig',  [ 
+        'data' => $data, 
+        
+    ]);
 
 }

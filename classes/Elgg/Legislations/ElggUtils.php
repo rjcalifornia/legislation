@@ -35,4 +35,29 @@ class ElggUtils{
             }
         }
     }
+
+    public function getSingleFile($subtype, $entity){
+
+        $fileUrl = null;
+
+        $getFile = elgg_get_entities(array(
+            'type' => 'object',
+            'subtype' => $subtype,        
+            'container_guid' => $entity->guid,	
+            'limit' => 1,
+            'no_results' => elgg_echo("file:none"),
+            'preload_owners' => true,
+            'preload_containers' => true,
+            'distinct' => false,
+        ));
+     
+        foreach ($getFile as $file) {
+            $img = get_entity($file->guid);
+            $fileUrl = elgg_get_download_url($img);
+            //$fileDetails = ['filename' => $entity->title, 'url' => $fileUrl];
+            //$files[] = $fileDetails;
+        }
+        return $fileUrl;
+
+    }
 }

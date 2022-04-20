@@ -20,12 +20,16 @@ $content = elgg_list_entities(array(
 $title = elgg_echo('collection:object:legislations:all');
 
 $sidebar = elgg_view('custom/legislations/all',  ['page' => 'all']);
-
+/*
 $body = elgg_view_layout('content', array(
 	'filter_value' => 'all',
 	'content' => $content,
 	'title' => $title,
 	'sidebar' => $sidebar,
-));
-
-echo elgg_view_page($title, $body);
+));*/
+echo elgg_view_page($title, [
+	'content' => $content,
+	'sidebar' => elgg_view('custom/legislations/all', ['page' => 'all']),
+	'filter_value' => 'all',
+]);
+//echo elgg_view_page($title, $body);

@@ -72,6 +72,16 @@ $data['additional_documentation_input'] = new \Twig\Markup(elgg_view('input/file
                                                 'required' => false,
                                         ]), 'UTF-8');
 
+$data['banner_label'] = elgg_echo('legislation:add:banner');
+$data['banner_input'] = new \Twig\Markup(elgg_view('input/file', [
+                                                'id' => 'project_banner',
+                                                'name' => 'project_banner',
+                                                'label' => 'Select a banner image (Optional)',
+                                                'multiple' => false,
+                                                'help' => 'If empty, a placeholder image will be used instead',
+                                                'required' => false,
+                                        ]), 'UTF-8');
+
 
 $data['sdg_label'] = elgg_echo('legislation:add:sdg');
 $data['sdg_input'] =  new \Twig\Markup(elgg_view('input/select', array(

@@ -6,6 +6,7 @@ return [
     'collection:object:legislations:all' => 'All Legislations',
     'legislations:none' => 'None',
     'legislation:add' => 'Create new collaborative legislation process',
+    'legislation:add:banner' => 'Select a banner image. If empty, a placeholder image will be used instead',
     'add:object:legislations' => 'Create a new legislation process',
     'legislation:add:documents' => 'Select a draft legislation document in PDF format',
     'legislations:add:process_datetime' => 'Process',
