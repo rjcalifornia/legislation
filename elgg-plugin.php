@@ -22,6 +22,8 @@ return [
                             'searchable' => true,
                             'likable' => true,
                         ],
+                        'searchable' => true,
+                        'likable' => true,
                     ],
 
                     //Declarar entity de los documentos
