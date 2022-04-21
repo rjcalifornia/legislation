@@ -23,7 +23,7 @@ return [
                             'likable' => true,
                         ],
                         'searchable' => true,
-                        'likable' => true,
+                        
                     ],
 
                     //Declarar entity de los documentos
@@ -114,6 +114,11 @@ return [
     ],
 
     'hooks' =>[
+        'likes:is_likable' => [
+			'object:legislations' => [
+				'Elgg\Values::getTrue' => [],
+			],
+		],
          //Add plugin menu
          'register' =>[
             

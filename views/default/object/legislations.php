@@ -124,6 +124,7 @@ if ($full) {
     $data['tags'] = $tags;
     $data['process_code'] = $single->process_code;
     $data['site_url'] = $site_url;
+    $data['deadline'] = $deadline;
     $data['sustainable_goals'] = $entity->goals;
     $data['responses'] = new \Twig\Markup($responses, 'UTF-8');
 
@@ -142,10 +143,16 @@ if ($full) {
 	];
 	$params = $params + $vars;
 
-    $test = elgg_view_menu('entity', [
+    $menu = elgg_view_menu('entity', [
         'entity' => $entity,
         'handler' => elgg_extract('handler', $vars),
         'prepare_dropdown' => true,
+    ]);
+
+    $likes = elgg_view_menu('social', [
+        'entity' => $entity,
+        'handler' => elgg_extract('handler', $vars),
+        'class' => 'elgg-menu-hz',
     ]);
 
     $data['banner_image'] = ElggUtils::getSingleFile('legislation_banner', $entity);
@@ -157,7 +164,8 @@ if ($full) {
     $data['start_date'] = Carbon::parse($entity->start_date);
     $data['end_date'] = Carbon::parse($entity->end_date);
     $data['tags'] = $entity->tags;
-    $data['menu'] = new \Twig\Markup($test, 'UTF-8');
+    $data['menu'] = new \Twig\Markup($menu, 'UTF-8');
+    $data['likes'] = new \Twig\Markup($likes, 'UTF-8');
 
     //var_dump( $single->toObject());
     echo $twig->render('legislation/elements/summary.html.twig',  [ 

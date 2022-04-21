@@ -122,7 +122,7 @@ if ($descriptiveImage != null) {
         ]);
     }
     if ($guid) {
-        system_message("The legislation project was published.");
+        system_message("The collaborative legislation project was saved.");
         forward('legislations');
      } else {
         register_error("There was a problem. Data could not be saved.");
