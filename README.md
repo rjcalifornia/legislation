@@ -10,12 +10,16 @@ Any legislative text can be shared with the public to receive comments on any pa
 ### Requirements
 * PHP 7.4.30
 * Composer
+* NodeJS LTS
 * elgg 4.x
 
 ## Installation
 
 - Clone this repository
 - Run ``` composer install ``` to install the required dependencies
+- Run ``` npm install ``` to install the required libraries
+- Copy the file  ``` .env.example ```  to  ``` .env ``` 
+- Enable the plugin
 
 ## Dependencies
 
