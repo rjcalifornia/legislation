@@ -5,6 +5,7 @@ return [
     'collection:object:legislations' => 'Collaborative Legislation',
     'collection:object:legislations:all' => 'All Legislations',
     'legislations:none' => 'None',
+    'legislation:edit' => 'Edit legislation project',
     'legislations:file:replace' => 'A file has already been uploaded. To replace it, select a new one below (leave blank to not change file)',
     'legislations:banner:replace' => 'To replace the banner image, select a new one below (optional)',
     'item:object:legislations' => 'Collaborative Legislations',
