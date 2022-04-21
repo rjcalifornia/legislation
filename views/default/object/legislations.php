@@ -126,6 +126,7 @@ if ($full) {
     $data['site_url'] = $site_url;
     $data['deadline'] = $deadline;
     $data['sustainable_goals'] = $entity->goals;
+    $data['banner_image'] = ElggUtils::getSingleFile('legislation_banner', $entity);
     $data['responses'] = new \Twig\Markup($responses, 'UTF-8');
 
     

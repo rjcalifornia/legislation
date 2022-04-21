@@ -1,36 +1,17 @@
 <style>
-.phase{
-    color: #515151;
-font-size: 0.875rem;
-}
 
-.elgg-layout-header > h2{
-    line-height: 1.4;
-margin-top: 0;
-margin-bottom: 0.5rem;
-font-size: 2.125rem;
-font-weight: 700;
-}
-.callout.alert, .callout.error {
-  background-color: #f2dede;
-  border-color: #ebccd1;
-  color: #a94442;
-}
-.callout {
-  position: relative;
-  margin: 0 0 1rem 0;
-  padding: 1rem;
-  border: 1px solid rgba(10,10,10,0.25);
-    border-top-color: rgba(10, 10, 10, 0.25);
-    border-right-color: rgba(10, 10, 10, 0.25);
-    border-bottom-color: rgba(10, 10, 10, 0.25);
-    border-left-color: rgba(10, 10, 10, 0.25);
-  border-radius: 0;
-  background-color: white;
-  color: #0a0a0a;
-}
 </style>
+<p class="legislation-hero title">Description</p>
+<div class="small-12 medium-11 column end">
+        <p>
+        {% if data.banner_image == null %}
+            <img src="{{data.site_url}}mod/legislation/graphics/placeholder.png" alt="Banner {{data.entity.title}}">
+        {% else %}
+            <img src="{{data.banner_image}}" alt="Banner {{data.entity.title}}">
+        {% endif %}
+        </p>
 
+      </div>
 <div class="legislation-main">
 
     <blockquote class="legislation-summary">
@@ -110,7 +91,7 @@ font-weight: 700;
         {% if data.deadline == true %}
         <br>
             <span class="callout notice alert">
-            Comments cannot be posted because the participation phase has ended
+            Participation phase has ended
           </span>
          <br>
         {% endif %}
