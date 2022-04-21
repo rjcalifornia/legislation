@@ -75,6 +75,7 @@ return [
 			'resource' => 'legislations/add',
 			'middleware' => [
 				\Elgg\Router\Middleware\Gatekeeper::class,
+                \Elgg\Router\Middleware\AdminGatekeeper::class,
 			],
 		],
 

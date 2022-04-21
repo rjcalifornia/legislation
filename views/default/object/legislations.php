@@ -71,7 +71,7 @@ if ($full) {
         'type' => 'object',
         'subtype' => 'additional_documentation',        
         'container_guid' => $entity->guid,	
-        'limit' => 5,
+        
         'no_results' => elgg_echo("file:none"),
         'preload_owners' => true,
         'preload_containers' => true,

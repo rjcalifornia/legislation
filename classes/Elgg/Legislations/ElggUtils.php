@@ -60,4 +60,30 @@ class ElggUtils{
         return $fileUrl;
 
     }
+
+    public function getMultipleFiles($subtype, $guid){
+
+        $files = [];
+
+        $getFile = elgg_get_entities(array(
+            'type' => 'object',
+            'subtype' => $subtype,        
+            'container_guid' => $guid,	
+            'no_results' => elgg_echo("file:none"),
+            'preload_owners' => true,
+            'preload_containers' => true,
+            'distinct' => false,
+        ));
+     
+        foreach ($getFile as $f) {
+            $file = get_entity($f->guid);
+            $fileUrl = elgg_get_download_url($file);
+            $fileDeleteUrl = elgg_generate_action_url('entity/delete', ['guid' => $file->guid,]);
+            $fileDetails = ['filename' => $file->title, 'url' => $fileUrl, 'delete' => $fileDeleteUrl];
+            
+            $files[] = $fileDetails;
+        }
+        return $files;
+
+    }
 }

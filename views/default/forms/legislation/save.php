@@ -1,6 +1,7 @@
 <?php
 
 use Elgg\Legislations\ElggGoals;
+use Elgg\Legislations\ElggUtils;
 
 $title = elgg_extract('title', $vars, '');
 $desc = elgg_extract('description', $vars, '');
@@ -22,7 +23,9 @@ $guid = elgg_extract('guid', $vars, null);
 if ($guid) {
 	$hiddenGuid = elgg_view('input/hidden', array('name' => 'guid', 'value' => $guid));
 	$data['hidden_guid_input'] = new \Twig\Markup($hiddenGuid, 'UTF-8');
-	
+	$data['file_exists'] = elgg_echo("legislations:file:replace");
+	$data['banner_exists'] = elgg_echo("legislations:banner:replace");
+        $data['additional_documentation'] = ElggUtils::getMultipleFiles('additional_documentation', $guid);
 }
 
 

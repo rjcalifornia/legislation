@@ -101,7 +101,12 @@ padding: 6px;
 
 
 <div class="field_set">
-	<label>{{data.project_draft_label}}</label><br />
+	{%if data.file_exists != null %}
+	<label>{{data.file_exists}}</label>
+	{% else %}
+	<label>{{data.project_draft_label}}</label>
+	{% endif %}
+	<br />
 	{{data.project_draft_input}}
 </div>
 
@@ -142,11 +147,32 @@ padding: 6px;
 <div class="field_set">
 	<label>{{data.additional_documentation_label}}</label><br />
 	{{data.additional_documentation_input}}
+	{% if data.additional_documentation is not empty %}
+		{% for ad in data.additional_documentation %}
+			<p>   
+				<a href="{{ad.url}}">
+					<span class="fa fa-file-pdf"></span>
+						{{ad.filename}}
+				</a>
+				<a href="{{ad.delete}}" class="legislation-tags-link" onclick="return confirm('Are you sure ?')"> Remove file </a>
+			</p>
+		{% endfor %}
+	{% endif %}
 </div>
 
 
 <div class="field_set">
-	<label>{{data.banner_label}}</label><br />
+	{%if data.banner_exists != null %}
+		<label>
+			{{data.banner_exists}}
+		</label>
+	{% else %}
+		<label>
+			{{data.banner_label}}
+		</label>
+	{% endif %}
+	
+	<br />
 	{{data.banner_input}}
 </div>
 

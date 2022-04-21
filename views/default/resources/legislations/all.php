@@ -4,8 +4,9 @@
 //elgg_pop_breadcrumb();
 elgg_push_collection_breadcrumbs('object', 'legislations');
 
+if (elgg_is_admin_logged_in()) {
 elgg_register_title_button('legislations', 'add', 'object', 'legislations');
-
+}
 $content = elgg_list_entities(array(
 	'type' => 'object',
 	'subtype' => 'legislations',
