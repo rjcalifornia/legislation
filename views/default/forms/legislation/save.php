@@ -9,7 +9,7 @@ $summary = elgg_extract('summary', $vars, '');
 $tags = elgg_extract('tags', $vars, '');
 $goals = elgg_extract('goals', $vars, '');
 $endDate = elgg_extract('end_date', $vars, '');
-$startDate = elgg_extract('end_date', $vars, '');
+$startDate = elgg_extract('start_date', $vars, '');
 
 $twig = elgg_legislation_twig();
 
