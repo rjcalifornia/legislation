@@ -6,9 +6,9 @@
 	"keywords": ["content", "widget"],
 	"homepage": "https://elgg.org",
     "require": {
-        "twig/twig": "^3.3",
-        "ramsey/uuid": "^4.2",
-        "nesbot/carbon": "^2.57",
-        "vlucas/phpdotenv": "^5.4"
+        "twig/twig": "^3.10",
+        "ramsey/uuid": "^4.7",
+        "nesbot/carbon": "^3.8",
+        "vlucas/phpdotenv": "^5.5"
     }
 }

@@ -24,6 +24,6 @@
   "homepage": "https://github.com/rjcalifornia/legislation#readme",
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "sweetalert2": "^11.4.8"
+    "sweetalert2": "^11.14.5"
   }
 }
