@@ -12,8 +12,8 @@ $endDate = elgg_extract('end_date', $vars, '');
 $startDate = elgg_extract('start_date', $vars, '');
 
 $twig = elgg_legislation_twig();
-
-$sdg = ElggGoals::getGoals();
+$elggGoals = new ElggGoals;
+$sdg = $elggGoals->getGoals();
 
 
 
@@ -31,6 +31,16 @@ if ($guid) {
 
 $access_id = elgg_extract('access_id', $vars, ACCESS_DEFAULT);
 $container_guid = elgg_extract('container_guid', $vars);
+
+$accessInput = elgg_view_field([
+        '#label' => elgg_echo('access'),
+        '#type' => 'access',
+        'name' => 'access_id',
+        'value' => elgg_extract('access_id', $vars, ACCESS_DEFAULT),
+        'entity' => elgg_extract('entity', $vars),
+        'entity_type' => 'object',
+        'required' => true,
+    ],);
 
 
 
@@ -119,13 +129,7 @@ $data['status_input']  = new \Twig\Markup( elgg_view('input/select', [
         ]),'UTF-8');
 
 $data['access_label'] = elgg_echo('access');
-$data['access_input']  = new \Twig\Markup( elgg_view('input/access', [
-                                                        'name' => 'access_id',
-                                                        'value' => $access_id,
-                                                        'entity' => get_entity($guid),
-                                                        'entity_type' => 'object',
-                                                        'entity_subtype' => 'legislations',
-                                                    ]),'UTF-8');
+$data['access_input']  = new \Twig\Markup( $accessInput, 'UTF-8');
 
 
 

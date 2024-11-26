@@ -12,22 +12,23 @@ namespace Elgg\Legislations\Menus;
  */
 class Site {
 
-	/**
+	   /**
 	 * Register item to menu
 	 *
-	 * @param \Elgg\Hook $hook 'register', 'menu:site'
+	 * @param \Elgg\Event $event 'register', 'menu:site'
 	 *
-	 * @return void|\Elgg\Menu\MenuItems
+	 * @return \Elgg\Menu\MenuItems
 	 */
-	public static function register(\Elgg\Hook $hook) {
-		$return = $hook->getValue();
+	public static function register(\Elgg\Event $event) {
+		$return = $event->getValue();
+		
 		$return[] = \ElggMenuItem::factory([
 			'name' => 'legislations',
-			'icon' => 'edit-regular',
+			'icon' => 'comment',
 			'text' => elgg_echo('collection:object:legislations'),
 			'href' => elgg_generate_url('default:object:legislations'),
 		]);
-	
+		
 		return $return;
 	}
 }

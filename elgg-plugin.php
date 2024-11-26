@@ -10,6 +10,14 @@ $dotenv->safeLoad();
 
 return [
 
+    'plugin' => [
+		'name' => 'Collaborative Legislation for elgg',
+		'activate_on_install' => false,
+		'dependencies' => [
+			'tagcloud' => [],
+		],
+	],
+
     'entities' =>[
         
                     //Declare Legislations Entity
@@ -104,6 +112,12 @@ return [
     ],
 
 
+    'views' => [
+        'default' => [
+           // 'sweetalert2.js' => __DIR__ . '/node_modules/sweetalert2/dist/sweetalert2.all.min.js',
+           'select.js' => __DIR__ . '/node_modules/select2/dist/js/select2.js',
+        ],
+],
 
 
     
@@ -114,14 +128,8 @@ return [
 		],
     ],
 
-    'hooks' =>[
-        'likes:is_likable' => [
-			'object:legislations' => [
-				'Elgg\Values::getTrue' => [],
-			],
-		],
-         //Add plugin menu
-         'register' =>[
+    'events' => [
+        'register' =>[
             
             //Register the site menu. It is located in the folder /Elgg/Legistations/Menus/Site.php
             'menu:site' => [

@@ -1,11 +1,10 @@
-define(function(require) {
-    var elgg = require("elgg");
-    var $ = require("jquery");
-    var base_url = window.location.origin;
+import 'jquery';
+//import 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js';
+
    
    // const Swal = require(swalUrl);
    //RequireJS allows only strings in the require section. Otherwise it wont work.
-    const Swal = require('../../../mod/legislation/node_modules/sweetalert2/dist/sweetalert2.all.min.js');
+  //  const Swal = import ('https://cdn.jsdelivr.net/npm/sweetalert2@11');
     //const Swal = require('https://cdn.jsdelivr.net/npm/sweetalert2@11')
     
 
@@ -48,4 +47,3 @@ console.log(extension);
 
 
 
-});
