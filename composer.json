@@ -1,14 +1,15 @@
 {
-    "name": "open_gov/legislation",
-	"type": "elgg-plugin",
-	"description": "Open Government and citizen participation plugin",
-	"license": "GPL-2.0-only",
-	"keywords": ["content", "widget"],
-	"homepage": "https://elgg.org",
+    "name": "rjcalifornia/legislation",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Rjcalifornia\\Legislation\\": "src/"
+        }
+    },
     "require": {
-        "twig/twig": "^3.10",
-        "ramsey/uuid": "^4.7",
+        "twig/twig": "^3.15",
         "nesbot/carbon": "^3.8",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.6",
+        "ramsey/uuid": "^4.7"
     }
 }

@@ -19,7 +19,7 @@ $cloud = elgg_view("custom/legislations/trending", [
 	'type' => 'object',
 	
 ]);
-$title = null;
+$title = 'Legislations';
 $trending = new \Twig\Markup(elgg_view_module('aside', $title, $cloud),'UTF-8');
 
  

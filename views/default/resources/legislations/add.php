@@ -14,9 +14,9 @@ if (!$guid) {
 
 $container = get_entity($guid);
 
-elgg_require_js("legislations/select2");
+elgg_import_esm("legislations/select2");
 
-elgg_require_js("legislations/format");
+elgg_import_esm("legislations/format");
 
 elgg_entity_gatekeeper($guid);
 
