@@ -10,7 +10,7 @@ $tags = elgg_extract('tags', $vars, '');
 $goals = elgg_extract('goals', $vars, '');
 $endDate = elgg_extract('end_date', $vars, '');
 $startDate = elgg_extract('start_date', $vars, '');
-
+$site_url = elgg_get_site_url();
 $twig = elgg_legislation_twig();
 $elggGoals = new ElggGoals;
 $sdg = $elggGoals->getGoals();
@@ -145,9 +145,9 @@ $data['footer'] = new \Twig\Markup((elgg_view_field([
                     ])), 'UTF-8');
 
 
+$data['site_url'] = $site_url;
 
-
-echo $twig->render('legislation/forms/add-new.html.twig', 
+echo $twig->render('legislation/forms/add.twig', 
         [
             'data' => $data,
         ]);

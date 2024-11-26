@@ -30,15 +30,16 @@ if (!$container->canWriteToContainer(0, 'object', 'legislations')) {
 
 $title = elgg_echo('legislation:add');
 elgg_push_breadcrumb($title);
-$form_vars = array('enctype' => 'multipart/form-data');
+$form_vars = ['enctype' => 'multipart/form-data'];
 $vars = legislations_prepare_form_vars();
 
 $content = elgg_view_form('legislation/save', $form_vars, $vars);
 //$content = '3333';
-$body = elgg_view_layout('content', array(
+$body = elgg_view_layout('content', [
 	'filter' => '',
 	'content' => $content,
 	'title' => $title,
-));
+	
+]);
 
 echo elgg_view_page($title, $body);
