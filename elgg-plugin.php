@@ -29,8 +29,8 @@ return [
                             'commentable' => true,
                             'searchable' => true,
                             'likable' => true,
+                            'restorable' => true,
                         ],
-                        'searchable' => true,
                         
                     ],
 
@@ -39,21 +39,36 @@ return [
                         'type' => 'object',
                         'subtype' => 'legislation_draft',
                         'class' => 'LegislationDraft',
-                        'searchable' => false,
+                        'capabilities' => [
+                            'commentable' => false,
+                            'searchable' => false,
+                            'likable' => false,
+                            'restorable' => true,
+                        ],
                     ],
                     //Declarar entity de los documentos
                     [
                         'type' => 'object',
                         'subtype' => 'additional_documentation',
                         'class' => 'AdditionalDocumentation',
-                        'searchable' => false,
+                        'capabilities' => [
+                            'commentable' => false,
+                            'searchable' => false,
+                            'likable' => false,
+                            'restorable' => true,
+                        ],
                     ],
                     //Banner image entity
                     [
                         'type' => 'object',
                         'subtype' => 'legislation_banner',
                         'class' => 'LegislationBanner',
-                        'searchable' => false,
+                        'capabilities' => [
+                            'commentable' => false,
+                            'searchable' => false,
+                            'likable' => false,
+                            'restorable' => true,
+                        ],
                     ],
                 ],
                 
@@ -114,8 +129,8 @@ return [
 
     'views' => [
         'default' => [
-           // 'sweetalert2.js' => __DIR__ . '/node_modules/sweetalert2/dist/sweetalert2.all.min.js',
-           'select.js' => __DIR__ . '/node_modules/select2/dist/js/select2.js',
+            'sweetalert2.js' => __DIR__ . '/node_modules/sweetalert2/dist/sweetalert2.esm.all.js',
+            'select.js' => __DIR__ . '/node_modules/select2/dist/js/select2.js',
         ],
 ],
 
